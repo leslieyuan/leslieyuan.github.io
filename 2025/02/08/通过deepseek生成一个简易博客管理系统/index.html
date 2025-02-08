@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>通过deepseek生成一个简易博客管理系统</title>
+  
+  <link rel="canonical" href="http://example.com/2025/02/08/%E9%80%9A%E8%BF%87deepseek%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+  
+  <meta name="description" content="提问:模仿这个网站https://www.usmacd.com，写一个类似的个人博客网页，要求能自己上传新的博客文章并展示，界面交互类似，前端使用react，后端用go语言来写，要求采用restful api接口 deepseek的回答如下： 要实现一个类似于 USMACD 的个人博客网站，支持上传">
+  
+  
+  <meta name="author" content="leslieyuan">
+  
+  
+  
+  <meta property="og:site_name" content="树洞之王" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="通过deepseek生成一个简易博客管理系统" />
+  
+  <meta property="og:description" content="提问:模仿这个网站https://www.usmacd.com，写一个类似的个人博客网页，要求能自己上传新的博客文章并展示，界面交互类似，前端使用react，后端用go语言来写，要求采用restful api接口 deepseek的回答如下： 要实现一个类似于 USMACD 的个人博客网站，支持上传">
+  
+  <meta property="og:url" content="http://example.com/2025/02/08/%E9%80%9A%E8%BF%87deepseek%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="通过deepseek生成一个简易博客管理系统">
+  
+  <meta name="twitter:description" content="提问:模仿这个网站https://www.usmacd.com，写一个类似的个人博客网页，要求能自己上传新的博客文章并展示，界面交互类似，前端使用react，后端用go语言来写，要求采用restful api接口 deepseek的回答如下： 要实现一个类似于 USMACD 的个人博客网站，支持上传">
+  
+  
+  
+  
+  <meta name="twitter:url" content="http://example.com/2025/02/08/%E9%80%9A%E8%BF%87deepseek%E7%94%9F%E6%88%90%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="/fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+  
+  <script src="/js/pic.min.js" defer></script>
+  
+
+  
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Hi 老子.
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/Works" class="ml">Works</a>
+          
+        
+          
+          <a href="/About" class="ml">About</a>
+          
+        
+        
+          
+            <a href="mailto:bellyclarkefe7@gmail.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>通过deepseek生成一个简易博客管理系统</h2>
+
+  <p>提问:模仿这个网站<a target="_blank" rel="noopener" href="https://www.usmacd.com,写一个类似的个人博客网页,要求能自己上传新的博客文章并展示,界面交互类似,前端使用react,后端用go语言来写,要求采用restful/">https://www.usmacd.com，写一个类似的个人博客网页，要求能自己上传新的博客文章并展示，界面交互类似，前端使用react，后端用go语言来写，要求采用restful</a> api接口</p>
+<p>deepseek的回答如下：</p>
+<p>要实现一个类似于 USMACD 的个人博客网站，支持上传新文章并展示，我们可以按照以下步骤进行开发。前端使用 React，后端使用 Go 语言，采用 RESTful API 接口模式。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>my-blog&#x2F;<br>├── backend&#x2F;               # Go 后端<br>│   ├── main.go            # 入口文件<br>│   ├── handlers&#x2F;          # 处理函数<br>│   ├── models&#x2F;            # 数据模型<br>│   ├── go.mod             # Go 模块文件<br>│   └── go.sum             # Go 依赖文件<br>├── frontend&#x2F;              # React 前端<br>│   ├── public&#x2F;            # 静态资源<br>│   ├── src&#x2F;               # 前端代码<br>│   │   ├── components&#x2F;    # React 组件<br>│   │   ├── App.js         # 主组件<br>│   │   ├── index.js       # 入口文件<br>│   │   └── styles.css     # 样式文件<br>│   ├── package.json       # 前端依赖<br>│   └── README.md<br>└── README.md              # 项目说明</p>
+<h2 id="后端（Go）"><a href="#后端（Go）" class="headerlink" title="后端（Go）"></a>后端（Go）</h2><h3 id="1-初始化-Go-项目"><a href="#1-初始化-Go-项目" class="headerlink" title="1. 初始化 Go 项目"></a>1. 初始化 Go 项目</h3><p>在 backend&#x2F; 目录下初始化 Go 模块：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd backend</span><br><span class="line">go mod init my-blog-backend</span><br></pre></td></tr></table></figure>
+
+<p>安装 Gin 框架：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建数据模型"><a href="#2-创建数据模型" class="headerlink" title="2. 创建数据模型"></a>2. 创建数据模型</h3><p>在 backend&#x2F;models&#x2F;article.go 中定义文章模型：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Article <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID      <span class="type">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">    Title   <span class="type">string</span> <span class="string">`json:&quot;title&quot;`</span></span><br><span class="line">    Content <span class="type">string</span> <span class="string">`json:&quot;content&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-实现处理函数"><a href="#3-实现处理函数" class="headerlink" title="3. 实现处理函数"></a>3. 实现处理函数</h3><p>在 backend&#x2F;handlers&#x2F;article.go 中实现 CRUD 操作的处理函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> handlers</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;net/http&quot;</span></span><br><span class="line">    <span class="string">&quot;strconv&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">    <span class="string">&quot;my-blog-backend/models&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> articles = []models.Article&#123;</span><br><span class="line">    &#123;ID: <span class="number">1</span>, Title: <span class="string">&quot;First Article&quot;</span>, Content: <span class="string">&quot;This is the first article&quot;</span>&#125;,</span><br><span class="line">    &#123;ID: <span class="number">2</span>, Title: <span class="string">&quot;Second Article&quot;</span>, Content: <span class="string">&quot;This is the second article&quot;</span>&#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetArticles</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    c.JSON(http.StatusOK, articles)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetArticle</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    id, _ := strconv.Atoi(c.Param(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">    <span class="keyword">for</span> _, article := <span class="keyword">range</span> articles &#123;</span><br><span class="line">        <span class="keyword">if</span> article.ID == id &#123;</span><br><span class="line">            c.JSON(http.StatusOK, article)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    c.JSON(http.StatusNotFound, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Article not found&quot;</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateArticle</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> newArticle models.Article</span><br><span class="line">    <span class="keyword">if</span> err := c.ShouldBindJSON(&amp;newArticle); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        c.JSON(http.StatusBadRequest, gin.H&#123;<span class="string">&quot;error&quot;</span>: err.Error()&#125;)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    newArticle.ID = <span class="built_in">len</span>(articles) + <span class="number">1</span></span><br><span class="line">    articles = <span class="built_in">append</span>(articles, newArticle)</span><br><span class="line">    c.JSON(http.StatusCreated, newArticle)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">UpdateArticle</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    id, _ := strconv.Atoi(c.Param(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">    <span class="keyword">var</span> updatedArticle models.Article</span><br><span class="line">    <span class="keyword">if</span> err := c.ShouldBindJSON(&amp;updatedArticle); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        c.JSON(http.StatusBadRequest, gin.H&#123;<span class="string">&quot;error&quot;</span>: err.Error()&#125;)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i, article := <span class="keyword">range</span> articles &#123;</span><br><span class="line">        <span class="keyword">if</span> article.ID == id &#123;</span><br><span class="line">            articles[i] = updatedArticle</span><br><span class="line">            c.JSON(http.StatusOK, updatedArticle)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    c.JSON(http.StatusNotFound, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Article not found&quot;</span>&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DeleteArticle</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    id, _ := strconv.Atoi(c.Param(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">    <span class="keyword">for</span> i, article := <span class="keyword">range</span> articles &#123;</span><br><span class="line">        <span class="keyword">if</span> article.ID == id &#123;</span><br><span class="line">            articles = <span class="built_in">append</span>(articles[:i], articles[i+<span class="number">1</span>:]...)</span><br><span class="line">            c.JSON(http.StatusOK, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Article deleted&quot;</span>&#125;)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    c.JSON(http.StatusNotFound, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;Article not found&quot;</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-设置路由"><a href="#4-设置路由" class="headerlink" title="4. 设置路由"></a>4. 设置路由</h3><p>在 backend&#x2F;main.go 中设置路由：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;my-blog-backend/handlers&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加 CORS 中间件</span></span><br><span class="line">    r.Use(<span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        c.Writer.Header().Set(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, <span class="string">&quot;*&quot;</span>)</span><br><span class="line">        c.Writer.Header().Set(<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>, <span class="string">&quot;GET, POST, PUT, DELETE, OPTIONS&quot;</span>)</span><br><span class="line">        c.Writer.Header().Set(<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>, <span class="string">&quot;Content-Type&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> c.Request.Method == <span class="string">&quot;OPTIONS&quot;</span> &#123;</span><br><span class="line">            c.AbortWithStatus(http.StatusNoContent)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        c.Next()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置路由</span></span><br><span class="line">    r.GET(<span class="string">&quot;/articles&quot;</span>, handlers.GetArticles)</span><br><span class="line">    r.GET(<span class="string">&quot;/articles/:id&quot;</span>, handlers.GetArticle)</span><br><span class="line">    r.POST(<span class="string">&quot;/articles&quot;</span>, handlers.CreateArticle)</span><br><span class="line">    r.PUT(<span class="string">&quot;/articles/:id&quot;</span>, handlers.UpdateArticle)</span><br><span class="line">    r.DELETE(<span class="string">&quot;/articles/:id&quot;</span>, handlers.DeleteArticle)</span><br><span class="line"></span><br><span class="line">    r.Run() <span class="comment">// 默认监听并在 0.0.0.0:8080 上启动服务</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="前端（React）"><a href="#前端（React）" class="headerlink" title="前端（React）"></a>前端（React）</h2><h3 id="1-初始化-React-项目"><a href="#1-初始化-React-项目" class="headerlink" title="1. 初始化 React 项目"></a>1. 初始化 React 项目</h3><p>在 frontend&#x2F; 目录下初始化 React 项目：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app frontend</span><br><span class="line">cd frontend</span><br></pre></td></tr></table></figure>
+<p>安装 Axios：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建组件"><a href="#2-创建组件" class="headerlink" title="2. 创建组件"></a>2. 创建组件</h3><p>在 frontend&#x2F;src&#x2F; 目录下创建以下组件：</p>
+<ul>
+<li>ArticleList.js：显示文章列表</li>
+<li>ArticleForm.js：用于创建和更新文章</li>
+<li>App.js：主组件</li>
+</ul>
+<h3 id="3-实现组件"><a href="#3-实现组件" class="headerlink" title="3. 实现组件"></a>3. 实现组件</h3><p><code>ArticleList.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useEffect, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ArticleList</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> [articles, setArticles] = <span class="title function_">useState</span>([]);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        axios.<span class="title function_">get</span>(<span class="string">&#x27;http://localhost:8080/articles&#x27;</span>)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="title function_">setArticles</span>(response.<span class="property">data</span>))</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(error));</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Articles<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                &#123;articles.map(article =&gt; (</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;article.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;article.title&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;article.content&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                ))&#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">ArticleList</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>ArticleForm.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ArticleForm</span> = (<span class="params">&#123; article, onSave &#125;</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> [title, setTitle] = <span class="title function_">useState</span>(article ? article.<span class="property">title</span> : <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> [content, setContent] = <span class="title function_">useState</span>(article ? article.<span class="property">content</span> : <span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleSubmit</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">        e.<span class="title function_">preventDefault</span>();</span><br><span class="line">        <span class="keyword">const</span> newArticle = &#123; title, content &#125;;</span><br><span class="line">        <span class="keyword">if</span> (article) &#123;</span><br><span class="line">            axios.<span class="title function_">put</span>(<span class="string">`http://localhost:8080/articles/<span class="subst">$&#123;article.id&#125;</span>`</span>, newArticle)</span><br><span class="line">                .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="title function_">onSave</span>(response.<span class="property">data</span>))</span><br><span class="line">                .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(error));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            axios.<span class="title function_">post</span>(<span class="string">&#x27;http://localhost:8080/articles&#x27;</span>, newArticle)</span><br><span class="line">                .<span class="title function_">then</span>(<span class="function"><span class="params">response</span> =&gt;</span> <span class="title function_">onSave</span>(response.<span class="property">data</span>))</span><br><span class="line">                .<span class="title function_">catch</span>(<span class="function"><span class="params">error</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(error));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">placeholder</span>=<span class="string">&quot;Title&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">value</span>=<span class="string">&#123;title&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setTitle(e.target.value)&#125;</span></span><br><span class="line"><span class="language-xml">            /&gt;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">textarea</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">placeholder</span>=<span class="string">&quot;Content&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">value</span>=<span class="string">&#123;content&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">onChange</span>=<span class="string">&#123;(e)</span> =&gt;</span> setContent(e.target.value)&#125;</span></span><br><span class="line"><span class="language-xml">            /&gt;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>Save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">ArticleForm</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>App.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ArticleList</span> <span class="keyword">from</span> <span class="string">&#x27;./ArticleList&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ArticleForm</span> <span class="keyword">from</span> <span class="string">&#x27;./ArticleForm&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> [selectedArticle, setSelectedArticle] = <span class="title function_">useState</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleSave</span> = (<span class="params">article</span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setSelectedArticle</span>(<span class="literal">null</span>);</span><br><span class="line">        <span class="comment">// 你可以在这里刷新文章列表</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">ArticleList</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;selectedArticle ? &#x27;Edit Article&#x27; : &#x27;Create Article&#x27;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">ArticleForm</span> <span class="attr">article</span>=<span class="string">&#123;selectedArticle&#125;</span> <span class="attr">onSave</span>=<span class="string">&#123;handleSave&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-运行项目"><a href="#4-运行项目" class="headerlink" title="4. 运行项目"></a>4. 运行项目</h3><ol>
+<li>启动 Go 后端：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd backend</span><br><span class="line">go run main.go</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>启动 React 前端：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd frontend</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+
+  <p> — Feb 8, 2025</p>
+  
+
+
+        </div>
+        <div class="row mt-2">
+  <h3>Search</h3>
+  <div><input id="search-text" title="search" class="search-text" type="text" placeholder="search......"></div>
+  <div style="margin-top: 1.5rem;">
+    <ul id="result"></ul>
+  </div>
+</div>
+        <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/leslieyuan" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+
+      
+
+      
+
+      
+
+    </div>
+  
+</div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
